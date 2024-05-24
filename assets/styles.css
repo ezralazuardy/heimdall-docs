@@ -1,0 +1,40 @@
+.logo {
+    width: 25px;
+    height: 25px;
+    margin-right: 0.5rem;
+}
+
+.cover {
+    margin-top: 1rem;
+}
+
+.footer {
+    background-color: #171717;
+    color: #ebebeb;
+    padding: 1.1rem 2rem 1.1rem 2rem;
+    font-size: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-content-left {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.footer-content-right {
+    text-align: center;
+    flex-grow: 1;
+}
+
+@media screen and (min-width: 600px) {
+    .footer-content-left {
+        text-align: left;
+        flex-grow: 1;
+    }
+
+    .footer-content-right {
+        text-align: right;
+        flex-grow: 1;
+    }
+}
