@@ -1,14 +1,14 @@
 <div>
-  <img alt="Vercel" src="https://deploy-badge.vercel.app?url=https://spam-detector.lazuardy.tech&logo=vercel&name=vercel" />
   <img alt="CodeQL Analysis" src="https://github.com/ezralazuardy/spam-detector/actions/workflows/github-code-scanning/codeql/badge.svg" />
+  <img alt="Vercel" src="https://deploy-badge.vercel.app?url=https://heimdall.lazuardy.tech&logo=vercel&name=vercel" />
 </div>
 
-## 🐞 spam detector
+## 📖 heimdall docs
 
-A simple, AI-based detector that analyze spam, malicious, and violent content or activity based on sentiment and keywords.
+This is the official documentation for Heimdall. It contains information about the library, how to install, configure, and use it in your project.
 
-🔗 https://spam-detector.lazuardy.tech
+Heimdall is a PHP library that implements an OAuth 2.0 Authorization Server and Resource Server. It is designed to be used with CodeIgniter 4 framework, but it can be used with any PHP framework or even without a framework.
 
-<img width="1440" alt="image" src="https://github.com/ezralazuardy/spam-detector/assets/24422019/ea2f7b97-e788-4e35-aee8-b98933c3af93">
+> Check out Heimdall Repository on [GitHub](https://github.com/ezralazuardy/heimdall).
 
-> Written in [Typescript](https://www.typescriptlang.org) using [Next](https://nextjs.org). Powered by [Vercel](https://vercel.com) and [Gemini](https://gemini.google.com).
+> Written in [TypeScript](https://http://typescriptlang.org) using [Nextra](https://nextra.site).
