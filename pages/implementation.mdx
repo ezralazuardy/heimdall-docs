@@ -269,6 +269,12 @@ The last thing to do is to register the resource endpoint in CodeIgniter's route
 $routes->get("rest/users", "Rest/Users::getUsers");
 ```
 
+Or you can use segments (backslash instead of forwarslash between Rest and Users).
+
+```php copy
+$routes->get("rest/(:segment)/users", 'Rest\Users::getUsers/$1');
+```
+
 <Callout type="warning">
   Make sure the registered path in ```Route.php``` is already registered in the [filter](#set-up-the-filter) too.
 </Callout>
