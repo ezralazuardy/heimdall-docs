@@ -59,7 +59,28 @@
       "breadcrumb": false
     }
   },
-  "---": {
+  "separator-1": {
     "type": "separator"
+  },
+  "heimdall_grant_types": {
+    "title": "Heimdall Grant Types",
+    "theme": {
+      "breadcrumb": true,
+      "collapsed": true
+    }
+  },
+  "heimdall_core": {
+    "title": "Heimdall Core",
+    "theme": {
+      "breadcrumb": true,
+      "collapsed": true
+    }
+  },
+  "heimdall_extensions": {
+    "title": "Heimdall Extentions",
+    "theme": {
+      "breadcrumb": true,
+      "collapsed": true
+    }
   }
 }
