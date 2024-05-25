@@ -29,6 +29,36 @@
       "breadcrumb": false
     }
   },
+  "grant_types": {
+    "title": "Grant Types",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "entities": {
+    "title": "Entities",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "repositories": {
+    "title": "Repositories",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "implementation": {
+    "title": "Implementation",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "database_setup": {
+    "title": "Database Setup",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
   "---": {
     "type": "separator"
   }

@@ -1,10 +1,12 @@
+import { Callout, FileTree } from "nextra/components"
+
 # Installation
 
 In order to install Heimdall to your existing CodeIgniter 4 project, you have to use [Composer](https://getcomposer.org/).
 
 In your root directory of your project, fire up a terminal and run:
 
-```
+```bash copy
 composer require ezralazuardy/heimdall
 ```
 
@@ -14,16 +16,14 @@ Then Heimdall is ready to be configured and run in your server.
 
 In case you want to get the latest update in alpha version, you can install the `dev-master` version.
 
-```
+```bash copy
 composer require ezralazuardy/heimdall:dev-master
 ```
 
-:::caution
-Please understand that `dev-master` version is **NOT** production ready, and some code may breaks.
-Use it at your own risks.
-:::
-
----
+<Callout type="warning">
+  Please understand that `dev-master` version is **NOT** production ready, and some code may breaks.
+  Use it at your own risks.
+</Callout>
 
 ## Directory Structure
 
@@ -31,22 +31,36 @@ After successfully installed Heimdall, now you have to implement it as a [CodeIg
 in `app/Libraries` directory of your CodeIgniter project. In your project root, create a directory
 structure like below:
 
-```
-CodeIgniter 4 project root directory
-├── app
-│   └── Libraries
-│       └── OAuthServer
-│           └── Entities            # directory for your Entity classes
-│           └── Repositories        # directory for your Repository classes
-│           └── OAuthServer.php     # the implementation of Heimdall
-├── ...
-```
+<FileTree>
+  <FileTree.Folder name="app" defaultOpen>
+    <FileTree.Folder name="Libraries" defaultOpen>
+      <FileTree.Folder name="OAuthServer" defaultOpen>
+        <FileTree.Folder name="Entities">
+          <FileTree.File name="AccessTokenEntity.php" />
+          <FileTree.File name="AuthCodeEntity.php" />
+          <FileTree.File name="ClientEntity.php" />
+          <FileTree.File name="RefreshTokenEntity.php" />
+          <FileTree.File name="ScopeEntity.php" />
+          <FileTree.File name="UserEntity.php" />
+        </FileTree.Folder>
+        <FileTree.Folder name="Repositories">
+          <FileTree.File name="AccessTokenRepository.php" />
+          <FileTree.File name="AuthCodeRepository.php" />
+          <FileTree.File name="ClientRepository.php" />
+          <FileTree.File name="RefreshTokenRepository.php" />
+          <FileTree.File name="ScopeRepository.php" />
+        </FileTree.Folder>
+        <FileTree.File name="OAuthServer.php" />
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+`Entities` directory is used to store your Entity classes, while `Repositories` directory is used to store. `OAuthServer.php` is the main implementation of Heimdall in your CodeIgniter project.
 
 The **OAuthServer** library name used here is optional though, you can change it as you like. But the
 main idea is to mark this CodeIgniter library as an implementation of Heimdall. In this documentation page,
 let's assume that **OAuthServer** is the name of Heimdall implementation in your CodeIgniter project.
-
----
 
 ## Generating public & private key
 
@@ -56,47 +70,65 @@ signatures.
 
 Make sure you are inside the Heimdall implementation directory.
 
-```
+```bash copy
 cd app/Libraries/OAuthServer
 ```
 
 To generate the private key run this command on the terminal.
 
-```
+```bash copy
 openssl genrsa -out private.key 2048
 ```
 
 If you want to provide a passphrase for your private key run this command instead.
 
-```
+```bash copy
 openssl genrsa -passout pass:_passphrase_ -out private.key 2048
 ```
 
 Then, extract the public key from the private key.
 
-```
+```bash copy
 openssl rsa -in private.key -pubout -out public.key
 ```
 
 Or use your passphrase if provided on private key generation.
 
-```
+```bash copy
 openssl rsa -in private.key -passin pass:_passphrase_ -pubout -out public.key
 ```
 
 After you successfully generate the public & private key, your Heimdall implementation directory
 would look like this:
 
-```
-CodeIgniter 4 project root directory
-├── app
-│   └── Libraries
-│       └── OAuthServer
-│           └── ...
-│           └── private.key     # the private key
-│           └── public.key      # the public key
-├── ...
-```
+<FileTree>
+  <FileTree.Folder name="app" defaultOpen>
+    <FileTree.Folder name="Libraries" defaultOpen>
+      <FileTree.Folder name="OAuthServer" defaultOpen>
+        <FileTree.Folder name="Entities">
+          <FileTree.File name="AccessTokenEntity.php" />
+          <FileTree.File name="AuthCodeEntity.php" />
+          <FileTree.File name="ClientEntity.php" />
+          <FileTree.File name="RefreshTokenEntity.php" />
+          <FileTree.File name="ScopeEntity.php" />
+          <FileTree.File name="UserEntity.php" />
+        </FileTree.Folder>
+        <FileTree.Folder name="Repositories">
+          <FileTree.File name="AccessTokenRepository.php" />
+          <FileTree.File name="AuthCodeRepository.php" />
+          <FileTree.File name="ClientRepository.php" />
+          <FileTree.File name="RefreshTokenRepository.php" />
+          <FileTree.File name="ScopeRepository.php" />
+        </FileTree.Folder>
+        <FileTree.File name="OAuthServer.php" />
+        <FileTree.File name="private.key" />
+        <FileTree.File name="public.key" />
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+`private.key` is the private key file, while `public.key` is the public key file.
 
 ### Set public & private key file permission
 
@@ -105,21 +137,19 @@ This step is optional though, but according to the best security practice, it is
 
 Set your public & private key file permission via chmod in terminal.
 
-```
+```bash copy
 sudo chmod 600 private.key
 sudo chmod 600 public.key
 ```
 
 Then verify the permission with:
 
-```
+```bash copy
 ls –l private.key
 ls -l public.key
 ```
 
-The permission should display as "[-rw-------](https://chmodcommand.com/chmod-600/)".
-
----
+The permission should display as `-rw-------`.
 
 ## Generating encryption key
 
@@ -135,18 +165,18 @@ applying key stretching to the password to reduce vulnerability to brute force a
 
 To generate a string password, you can run the following command in the terminal:
 
-```
+```bash copy
 php -r 'echo base64_encode(random_bytes(32)), PHP_EOL;'
 ```
 
 Then, copy the generated encryption key and apply it to your CodeIgniter `.env` file.
 
-```
+```bash copy
 encryption.key = <put your generated encryption key here>
 encryption.driver = OpenSSL
 ```
 
-:::caution
-You have to add the string password encryption key in your CodeIgniter `.env` file or Heimdall will throw a
-`HeimdallConfigException` at runtime due the lack of encryption key.
-:::
+<Callout type="warning">
+  You have to add the string password encryption key in your CodeIgniter `.env` file or Heimdall will throw a
+  `HeimdallConfigException` at runtime due the lack of encryption key.
+</Callout>
