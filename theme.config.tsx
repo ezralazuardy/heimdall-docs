@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { DocsThemeConfig } from "nextra-theme-docs";
 
 const config: DocsThemeConfig = {
@@ -11,11 +10,26 @@ const config: DocsThemeConfig = {
   head: (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <meta property="title" content="Heimdall" />
+      <meta
+        property="description"
+        content="🔥 Painless OAuth 2.0 Server for CodeIgniter 4."
+      />
+
+      <meta property="twitter:title" content="Heimdall" />
+      <meta
+        property="twitter:description"
+        content="🔥 Painless OAuth 2.0 Server for CodeIgniter 4."
+      />
+
       <meta property="og:title" content="Heimdall" />
       <meta
         property="og:description"
         content="🔥 Painless OAuth 2.0 Server for CodeIgniter 4."
       />
+
+      <meta property="og:url" content="https://heimdall.lazuardy.tech" />
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     </>
   ),
